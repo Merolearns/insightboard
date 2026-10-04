@@ -1,0 +1,501 @@
+date,region,product,units,revenue
+2025-06-15,West,Widget A,10,941.2
+2025-10-02,West,Doohickey,7,616.42
+2025-04-20,Northeast,Widget A,3,89.64
+2025-05-04,West,Doohickey,6,759.72
+2025-03-05,West,Doohickey,15,2147.55
+2025-10-27,Midwest,Widget A,26,580.06
+2025-10-13,Midwest,Doohickey,9,650.16
+2025-03-02,Midwest,Widget A,37,2817.92
+2025-10-25,South,Widget A,37,5360.93
+2025-10-08,Midwest,Gadget Y,5,646.95
+2025-12-15,South,Gadget Y,35,3532.9
+2025-10-27,Midwest,Widget B,30,2616.3
+2025-12-24,South,Doohickey,16,464.48
+2025-09-11,South,Doohickey,22,3601.84
+2025-02-07,Midwest,Gadget X,8,947.84
+2025-03-19,West,Doohickey,32,3190.72
+2025-10-21,South,Doohickey,21,1737.75
+2025-09-12,West,Widget A,38,6754.5
+2025-05-19,West,Widget A,31,4866.38
+2025-12-26,Northeast,Gadget X,20,2932.0
+2025-07-17,Northeast,Gadget X,23,383.87
+2025-03-28,West,Widget B,40,1454.4
+2025-05-28,Northeast,Gadget Y,9,1490.22
+2025-09-12,Northeast,Doohickey,6,279.6
+2025-05-23,South,Gadget Y,9,1641.69
+2025-07-03,Midwest,Widget A,25,5280.25
+2025-04-01,Midwest,Widget A,10,602.5
+2025-09-06,South,Widget A,38,1897.34
+2025-03-16,South,Widget B,27,3326.13
+2025-12-20,West,Gadget Y,33,6918.45
+2025-12-15,Northeast,Gadget Y,36,3369.96
+2025-02-23,West,Widget B,31,4461.83
+2025-02-04,West,Gadget X,14,1451.1
+2025-11-04,Midwest,Doohickey,4,133.16
+2025-02-21,West,Widget B,24,3351.84
+2025-11-11,South,Gadget X,25,1072.5
+2025-11-05,West,Gadget Y,24,2654.88
+2025-08-27,West,Widget B,31,3491.84
+2025-02-22,Northeast,Widget B,22,3651.78
+2025-09-22,South,Widget B,2,109.36
+2025-12-20,South,Widget A,35,7074.9
+2025-12-23,Midwest,Gadget X,17,2037.11
+2025-04-25,South,Widget B,35,4362.75
+2025-11-10,Northeast,Widget B,13,2335.58
+2025-04-13,West,Widget A,34,3893.0
+2025-05-24,South,Gadget Y,31,2043.21
+2025-06-28,West,Widget B,24,690.0
+2025-08-29,Northeast,Doohickey,13,1069.25
+2025-11-09,South,Widget A,1,111.73
+2025-12-05,Midwest,Gadget Y,8,1609.84
+2025-04-02,South,Widget A,28,4931.92
+2025-07-22,West,Widget B,30,2864.7
+2025-03-29,Northeast,Widget B,9,159.57
+2025-11-10,South,Widget B,39,8420.1
+2025-10-08,West,Widget A,36,1412.64
+2025-09-27,Midwest,Widget B,9,920.07
+2025-01-15,Midwest,Doohickey,17,956.42
+2025-06-16,Midwest,Widget A,17,2128.91
+2025-07-01,Northeast,Doohickey,30,4493.7
+2025-03-08,West,Gadget Y,35,1525.3
+2025-04-04,Midwest,Widget B,39,499.98
+2025-03-14,West,Doohickey,31,4363.87
+2025-02-01,Northeast,Widget A,21,3232.32
+2025-10-14,South,Widget A,4,254.76
+2025-02-20,West,Widget A,33,3499.65
+2025-08-15,Midwest,Gadget X,21,2927.61
+2025-08-20,Northeast,Doohickey,33,4056.36
+2025-05-07,South,Doohickey,34,6606.88
+2025-04-14,West,Gadget Y,29,1175.08
+2025-08-15,Midwest,Gadget Y,21,568.89
+2025-02-07,West,Widget B,14,2117.5
+2025-11-26,Midwest,Gadget Y,24,1001.76
+2025-04-23,Northeast,Widget B,7,663.88
+2025-12-08,Northeast,Doohickey,15,683.7
+2025-07-26,South,Gadget X,22,2191.86
+2025-02-17,Northeast,Gadget Y,24,385.2
+2025-12-27,South,Doohickey,2,183.88
+2025-02-02,Midwest,Widget A,8,1735.2
+2025-02-13,Midwest,Gadget X,17,1165.52
+2025-03-08,South,Gadget Y,28,5283.88
+2025-03-18,Northeast,Gadget X,35,7111.65
+2025-02-15,Midwest,Gadget Y,18,431.46
+2025-02-07,West,Gadget X,18,3729.24
+2025-02-12,West,Gadget X,39,7413.9
+2025-03-04,Northeast,Gadget X,30,432.0
+2025-11-15,Midwest,Widget A,9,188.91
+2025-03-24,Midwest,Gadget X,17,382.16
+2025-11-18,Midwest,Gadget X,20,2449.4
+2025-08-17,South,Gadget X,33,5009.73
+2025-01-10,West,Doohickey,17,334.73
+2025-10-10,Midwest,Gadget Y,13,1546.48
+2025-02-24,Northeast,Doohickey,28,4159.4
+2025-06-07,South,Widget B,14,3028.9
+2025-12-28,South,Widget A,9,865.62
+2025-03-08,South,Gadget Y,1,26.71
+2025-03-25,Northeast,Doohickey,4,118.28
+2025-12-10,South,Widget A,19,2594.45
+2025-08-24,Northeast,Widget A,12,537.24
+2025-05-15,South,Widget B,24,5089.2
+2025-01-18,Midwest,Widget A,20,1146.4
+2025-06-21,South,Doohickey,25,736.25
+2025-12-02,West,Widget A,13,827.06
+2025-05-16,West,Gadget Y,6,251.52
+2025-01-12,Midwest,Widget A,20,1505.6
+2025-10-27,Midwest,Doohickey,34,6442.32
+2025-07-19,Northeast,Widget B,21,3399.9
+2025-05-26,West,Doohickey,40,5831.6
+2025-11-18,Midwest,Doohickey,28,4609.92
+2025-09-16,West,Doohickey,37,6869.79
+2025-12-31,West,Widget B,15,445.5
+2025-11-23,Northeast,Gadget Y,24,5077.92
+2025-10-13,Midwest,Gadget Y,4,570.32
+2025-05-16,West,Doohickey,1,107.05
+2025-10-02,West,Gadget Y,6,894.78
+2025-05-10,Midwest,Widget B,5,940.0
+2025-04-29,Northeast,Widget A,30,3442.2
+2025-09-03,Midwest,Widget A,19,3259.07
+2025-11-04,South,Doohickey,10,810.1
+2025-10-18,West,Gadget Y,9,131.31
+2025-05-18,Northeast,Gadget X,7,1091.79
+2025-12-29,Northeast,Gadget Y,34,2427.26
+2025-03-02,West,Gadget Y,36,1923.84
+2025-01-09,Northeast,Gadget X,19,2041.93
+2025-07-18,Midwest,Widget A,14,2836.96
+2025-10-25,South,Gadget X,6,248.88
+2025-03-09,South,Widget A,39,7121.79
+2025-12-27,Northeast,Gadget Y,24,1443.12
+2025-01-13,Northeast,Gadget Y,11,140.25
+2025-07-27,Northeast,Gadget X,20,3265.0
+2025-07-12,South,Widget A,21,780.15
+2025-06-16,West,Widget B,22,4103.88
+2025-01-07,West,Gadget Y,19,1228.73
+2025-07-19,Northeast,Gadget X,38,1059.82
+2025-01-25,South,Widget B,18,596.88
+2025-05-08,South,Widget B,18,1849.32
+2025-07-11,Northeast,Doohickey,28,5486.04
+2025-10-09,West,Gadget Y,14,2263.38
+2025-08-19,South,Gadget Y,40,6742.0
+2025-01-26,Northeast,Gadget Y,36,1385.28
+2025-06-25,South,Gadget Y,19,1404.86
+2025-12-02,Northeast,Widget A,16,1193.12
+2025-03-27,Northeast,Doohickey,11,304.04
+2025-04-23,Northeast,Gadget Y,29,5814.5
+2025-03-13,West,Widget B,36,1872.72
+2025-06-25,Midwest,Gadget X,36,1114.2
+2025-05-13,West,Gadget Y,37,1999.85
+2025-07-16,Midwest,Gadget Y,27,4512.51
+2025-05-19,Northeast,Gadget X,22,3705.68
+2025-10-22,Midwest,Widget A,24,916.32
+2025-05-19,Northeast,Gadget Y,16,1471.84
+2025-06-09,Northeast,Gadget Y,2,76.94
+2025-10-28,Northeast,Doohickey,32,385.28
+2025-08-28,West,Widget B,29,1846.72
+2025-03-21,West,Gadget Y,10,1206.5
+2025-02-13,West,Widget B,36,6249.24
+2025-04-30,South,Widget B,37,7523.58
+2025-11-17,Northeast,Widget A,17,2071.96
+2025-02-20,Midwest,Gadget Y,5,372.35
+2025-05-14,West,Widget A,15,2646.3
+2025-10-03,South,Gadget X,20,4385.0
+2025-11-27,Midwest,Doohickey,16,1773.76
+2025-05-07,South,Widget A,2,423.62
+2025-01-12,Northeast,Widget A,13,1503.45
+2025-05-12,South,Widget B,15,2262.15
+2025-09-10,Northeast,Gadget X,3,470.19
+2025-12-16,South,Doohickey,26,1383.2
+2025-02-04,Midwest,Gadget X,14,1611.4
+2025-04-10,South,Gadget X,15,1631.1
+2025-02-25,Midwest,Widget B,40,4604.8
+2025-09-06,West,Doohickey,27,5436.72
+2025-03-16,West,Doohickey,26,606.06
+2025-03-14,West,Widget B,27,615.06
+2025-07-21,South,Widget A,29,5765.78
+2025-02-10,Midwest,Doohickey,11,885.28
+2025-08-28,Northeast,Gadget X,3,230.58
+2025-06-19,West,Widget A,29,1369.09
+2025-05-24,West,Doohickey,6,510.66
+2025-04-17,South,Gadget Y,25,2154.5
+2025-02-14,Midwest,Gadget X,4,634.76
+2025-10-05,South,Gadget Y,29,1512.35
+2025-01-16,Northeast,Widget A,27,1716.93
+2025-07-12,West,Gadget X,3,325.56
+2025-04-10,South,Gadget X,5,994.5
+2025-05-20,West,Gadget X,22,4646.4
+2025-12-20,South,Widget A,21,4289.04
+2025-11-01,Midwest,Widget A,5,85.25
+2025-09-01,Northeast,Gadget X,30,6312.3
+2025-08-09,Northeast,Widget B,32,1267.2
+2025-01-05,Midwest,Doohickey,20,3662.6
+2025-05-01,Northeast,Gadget X,21,4013.94
+2025-11-02,Northeast,Widget B,6,710.82
+2025-05-07,West,Gadget Y,27,687.42
+2025-10-10,Northeast,Widget A,35,2791.6
+2025-02-06,Midwest,Widget A,17,2412.64
+2025-08-04,Northeast,Widget B,32,6962.88
+2025-04-30,Midwest,Doohickey,9,888.3
+2025-12-07,South,Gadget X,8,1393.52
+2025-05-24,South,Gadget X,37,2503.79
+2025-04-12,Midwest,Widget B,29,1840.63
+2025-03-20,Midwest,Gadget X,19,3722.29
+2025-02-03,Midwest,Doohickey,26,1672.84
+2025-09-27,West,Gadget Y,15,2206.95
+2025-01-19,Midwest,Gadget Y,7,90.51
+2025-07-11,Midwest,Widget A,3,583.17
+2025-01-26,Midwest,Widget A,13,1779.7
+2025-07-10,Northeast,Doohickey,33,6340.95
+2025-05-14,South,Widget B,1,34.0
+2025-01-20,West,Widget B,24,1985.28
+2025-05-11,Midwest,Widget A,3,410.04
+2025-06-17,Midwest,Doohickey,27,4133.43
+2025-06-09,Northeast,Doohickey,5,271.55
+2025-09-05,Northeast,Doohickey,5,484.5
+2025-03-21,Midwest,Gadget Y,35,1083.6
+2025-12-23,South,Gadget X,18,1750.32
+2025-08-02,South,Gadget Y,4,307.88
+2025-08-02,South,Widget B,2,383.52
+2025-07-20,West,Gadget Y,26,1413.36
+2025-03-22,West,Gadget Y,28,997.36
+2025-10-23,Midwest,Widget B,24,2588.88
+2025-01-08,Northeast,Widget A,4,506.88
+2025-10-21,Midwest,Widget B,40,8194.4
+2025-06-28,Midwest,Widget A,19,867.54
+2025-02-25,Midwest,Gadget X,25,2850.75
+2025-03-06,Northeast,Gadget X,3,644.73
+2025-01-28,Northeast,Widget A,39,7980.96
+2025-12-31,Midwest,Widget B,40,6206.0
+2025-11-14,Midwest,Gadget Y,26,3636.36
+2025-04-04,Northeast,Doohickey,37,2122.69
+2025-03-22,Midwest,Widget B,25,2168.0
+2025-04-09,West,Gadget X,3,587.52
+2025-03-02,South,Gadget Y,25,3417.5
+2025-06-07,Northeast,Gadget X,38,2426.3
+2025-08-17,West,Widget A,33,3404.94
+2025-11-13,Northeast,Doohickey,32,3480.96
+2025-08-23,Northeast,Widget A,12,2167.08
+2025-02-04,South,Widget A,9,779.22
+2025-08-15,West,Widget A,33,3897.63
+2025-11-22,South,Doohickey,9,261.99
+2025-02-10,Northeast,Widget B,4,673.72
+2025-01-14,West,Widget B,5,1095.95
+2025-03-09,Midwest,Widget B,32,2300.16
+2025-02-03,South,Widget B,23,3196.31
+2025-06-15,Northeast,Widget B,40,2768.0
+2025-05-11,Northeast,Widget B,33,7015.14
+2025-10-31,Midwest,Gadget X,17,2381.7
+2025-07-10,Northeast,Widget B,3,160.14
+2025-11-22,Northeast,Widget B,18,2760.66
+2025-05-16,West,Gadget X,8,1374.4
+2025-08-20,West,Gadget X,36,4336.56
+2025-10-02,South,Gadget X,26,4302.74
+2025-07-12,South,Gadget X,24,3170.16
+2025-02-11,West,Gadget X,29,1735.65
+2025-09-22,South,Widget A,17,1300.5
+2025-01-18,Northeast,Gadget Y,15,646.05
+2025-09-20,Midwest,Gadget Y,24,4758.48
+2025-04-27,West,Widget A,40,5914.0
+2025-01-02,West,Doohickey,37,3175.71
+2025-07-02,South,Doohickey,35,2052.75
+2025-03-10,Northeast,Widget B,14,1234.52
+2025-03-10,Midwest,Widget B,1,206.81
+2025-08-19,Midwest,Gadget X,7,176.68
+2025-07-25,West,Doohickey,17,3623.72
+2025-06-29,Northeast,Doohickey,39,5705.31
+2025-09-23,West,Widget A,32,2038.08
+2025-02-01,Midwest,Widget B,35,603.75
+2025-03-23,West,Widget A,4,806.56
+2025-11-10,Midwest,Widget B,36,5349.96
+2025-07-31,Northeast,Doohickey,13,1557.4
+2025-03-31,South,Widget A,33,2519.55
+2025-09-02,Northeast,Gadget Y,35,466.2
+2025-02-11,West,Gadget X,29,1405.92
+2025-04-29,South,Widget A,3,112.92
+2025-05-17,South,Gadget X,36,5518.08
+2025-11-25,West,Widget B,14,416.78
+2025-05-14,Midwest,Widget B,16,2993.28
+2025-06-17,South,Doohickey,13,2535.91
+2025-05-03,Northeast,Gadget Y,25,5019.25
+2025-09-29,Northeast,Widget B,1,190.36
+2025-10-20,Northeast,Doohickey,20,3523.0
+2025-10-27,Midwest,Widget B,5,647.8
+2025-01-17,Midwest,Gadget X,2,70.54
+2025-03-14,Midwest,Widget A,2,36.84
+2025-12-23,West,Doohickey,5,826.25
+2025-07-06,West,Gadget Y,13,2366.65
+2025-02-24,West,Widget A,16,876.64
+2025-01-18,South,Gadget Y,6,1101.66
+2025-02-21,Midwest,Gadget X,9,291.24
+2025-06-13,West,Gadget X,22,2203.08
+2025-05-12,South,Gadget X,19,419.33
+2025-11-05,South,Doohickey,33,3663.99
+2025-01-16,West,Gadget X,27,499.5
+2025-08-29,Midwest,Widget A,4,495.52
+2025-10-22,West,Doohickey,19,901.36
+2025-04-14,West,Widget A,19,3240.07
+2025-06-28,Midwest,Gadget Y,32,1020.8
+2025-10-31,South,Doohickey,23,4855.3
+2025-03-23,Midwest,Gadget Y,19,3449.83
+2025-03-26,West,Gadget Y,8,1658.0
+2025-12-23,South,Gadget X,36,6324.48
+2025-02-18,West,Gadget Y,26,5333.38
+2025-11-27,South,Gadget X,2,178.74
+2025-08-08,Northeast,Widget B,35,4068.75
+2025-08-24,West,Gadget X,9,1103.04
+2025-10-25,Northeast,Doohickey,21,2530.92
+2025-06-15,South,Doohickey,11,1191.74
+2025-04-29,Midwest,Doohickey,9,733.32
+2025-04-09,Midwest,Widget B,18,1344.78
+2025-05-07,South,Widget B,21,2885.4
+2025-05-01,South,Widget A,21,4426.8
+2025-03-26,Midwest,Widget B,7,368.55
+2025-06-04,Midwest,Widget A,20,2049.2
+2025-11-23,Northeast,Gadget Y,7,492.87
+2025-01-18,Northeast,Widget B,1,95.0
+2025-09-14,Midwest,Gadget X,19,2058.84
+2025-11-06,Midwest,Gadget Y,26,341.9
+2025-12-25,Northeast,Widget B,37,4964.66
+2025-12-08,Midwest,Widget A,38,7193.78
+2025-08-21,West,Gadget Y,28,2159.08
+2025-05-05,Midwest,Gadget X,26,4168.84
+2025-08-05,Northeast,Doohickey,31,3307.08
+2025-12-12,South,Widget A,12,2376.6
+2025-07-19,West,Widget A,32,6428.8
+2025-05-09,Midwest,Doohickey,35,2006.2
+2025-06-28,Northeast,Doohickey,7,1317.47
+2025-04-15,South,Doohickey,31,3674.74
+2025-06-25,Northeast,Widget B,27,4491.72
+2025-12-17,West,Doohickey,12,1123.68
+2025-07-02,Northeast,Gadget Y,4,258.04
+2025-02-01,Northeast,Gadget X,1,27.64
+2025-10-25,South,Gadget Y,17,590.41
+2025-09-27,Northeast,Gadget Y,15,3282.0
+2025-04-19,West,Widget B,11,427.79
+2025-08-29,Midwest,Gadget X,36,5828.76
+2025-12-08,South,Doohickey,27,2952.72
+2025-11-29,Northeast,Gadget X,9,1567.89
+2025-04-28,South,Gadget Y,18,2852.46
+2025-12-14,South,Gadget X,12,1346.04
+2025-05-06,Northeast,Gadget Y,20,1572.6
+2025-11-16,South,Widget B,6,894.78
+2025-06-05,South,Widget B,25,596.75
+2025-09-29,West,Widget A,23,3305.1
+2025-04-18,South,Doohickey,5,742.2
+2025-02-21,Midwest,Widget B,38,1584.22
+2025-08-20,Midwest,Gadget Y,23,4030.98
+2025-10-01,West,Doohickey,11,1526.58
+2025-11-22,Midwest,Doohickey,20,1061.0
+2025-02-10,West,Doohickey,29,4396.98
+2025-03-02,Midwest,Gadget Y,17,1685.72
+2025-09-10,Northeast,Widget B,36,869.76
+2025-12-25,Midwest,Doohickey,32,2025.28
+2025-11-03,South,Gadget Y,1,45.35
+2025-12-23,South,Gadget Y,37,4273.5
+2025-07-11,West,Widget B,28,2775.08
+2025-11-23,West,Widget A,24,3463.44
+2025-11-09,South,Widget A,3,461.94
+2025-09-19,Midwest,Widget A,31,3497.11
+2025-04-20,South,Widget A,27,3835.62
+2025-12-04,Midwest,Gadget X,24,1991.76
+2025-08-11,West,Gadget X,22,2196.92
+2025-05-30,Northeast,Gadget X,23,4235.91
+2025-09-15,South,Widget B,18,3484.44
+2025-12-02,South,Widget B,32,5655.36
+2025-06-12,West,Widget A,20,770.6
+2025-07-24,West,Gadget Y,36,7063.56
+2025-06-03,Midwest,Gadget Y,7,93.03
+2025-11-08,Northeast,Doohickey,4,704.48
+2025-03-17,West,Widget B,39,7576.92
+2025-01-21,Midwest,Widget A,30,4261.8
+2025-12-06,Northeast,Widget A,12,2313.48
+2025-12-02,Midwest,Gadget X,1,88.72
+2025-10-15,Midwest,Gadget Y,17,3253.63
+2025-01-18,West,Gadget Y,21,341.04
+2025-10-18,West,Gadget Y,34,686.46
+2025-10-22,West,Gadget Y,26,2726.62
+2025-11-01,Midwest,Gadget Y,38,8305.66
+2025-07-31,Northeast,Widget B,36,1195.92
+2025-03-19,West,Widget A,1,100.82
+2025-02-15,Midwest,Gadget Y,14,2700.18
+2025-01-10,Midwest,Gadget Y,18,2909.34
+2025-04-06,Midwest,Widget A,4,352.4
+2025-05-31,Northeast,Gadget X,36,5742.72
+2025-01-27,West,Doohickey,3,43.11
+2025-02-10,Midwest,Gadget Y,25,1917.5
+2025-11-08,Northeast,Gadget Y,4,311.16
+2025-12-13,West,Gadget X,11,463.54
+2025-11-27,Northeast,Gadget Y,11,1572.78
+2025-07-17,South,Gadget X,29,6047.66
+2025-05-24,South,Doohickey,4,565.36
+2025-01-08,South,Doohickey,10,1370.4
+2025-08-08,Northeast,Doohickey,16,1445.6
+2025-04-30,West,Gadget X,29,2056.97
+2025-05-15,West,Gadget X,18,1797.84
+2025-03-14,Northeast,Gadget X,37,1575.46
+2025-10-01,Northeast,Gadget Y,6,745.92
+2025-04-13,West,Gadget Y,15,1145.55
+2025-08-27,West,Gadget Y,14,2864.54
+2025-08-24,South,Widget A,35,1058.4
+2025-04-30,South,Doohickey,26,3446.3
+2025-06-14,Midwest,Widget B,31,3635.68
+2025-04-19,South,Gadget X,13,405.34
+2025-10-23,Midwest,Widget B,37,3206.05
+2025-01-23,West,Gadget X,32,2873.6
+2025-11-20,Midwest,Gadget X,30,5273.1
+2025-11-02,West,Widget A,2,167.48
+2025-01-18,Northeast,Doohickey,14,3052.0
+2025-10-18,South,Gadget Y,14,929.74
+2025-02-19,Midwest,Gadget X,29,4976.11
+2025-01-20,Midwest,Gadget Y,22,1183.82
+2025-02-12,South,Gadget Y,2,45.22
+2025-09-07,Northeast,Widget A,5,957.5
+2025-12-28,Midwest,Widget A,6,393.0
+2025-12-09,Northeast,Widget B,33,3094.41
+2025-07-09,Midwest,Widget B,16,3492.48
+2025-01-20,West,Doohickey,17,3531.92
+2025-01-15,Northeast,Widget A,4,262.56
+2025-02-21,West,Widget B,10,780.8
+2025-12-13,Northeast,Widget A,20,2693.6
+2025-08-30,Northeast,Widget A,21,1875.51
+2025-07-11,Northeast,Widget B,31,2820.07
+2025-03-15,Midwest,Widget A,1,109.32
+2025-03-22,South,Widget B,15,422.7
+2025-08-17,Northeast,Widget A,7,1432.2
+2025-11-18,South,Gadget X,5,530.45
+2025-04-30,South,Widget B,31,1117.55
+2025-06-19,Midwest,Gadget Y,15,2476.5
+2025-10-11,Midwest,Gadget X,10,1033.1
+2025-08-03,West,Gadget X,27,1709.91
+2025-10-20,Midwest,Gadget X,19,1550.02
+2025-09-09,Northeast,Widget A,7,547.12
+2025-03-20,Midwest,Doohickey,33,786.39
+2025-09-02,Midwest,Gadget X,19,699.01
+2025-08-10,Midwest,Widget A,17,3733.2
+2025-07-19,Midwest,Widget A,19,1870.55
+2025-05-31,West,Gadget Y,10,2155.6
+2025-09-17,Northeast,Widget A,22,2601.28
+2025-09-27,Northeast,Widget A,19,962.35
+2025-07-29,Midwest,Widget B,14,974.12
+2025-04-03,Midwest,Widget B,34,5856.5
+2025-11-04,Northeast,Gadget X,6,1106.58
+2025-03-31,Midwest,Doohickey,14,567.0
+2025-06-07,Northeast,Widget A,13,183.17
+2025-09-23,Northeast,Widget A,23,1879.79
+2025-01-08,Northeast,Widget B,27,5435.64
+2025-12-07,South,Widget A,18,1145.7
+2025-03-25,West,Gadget X,24,3157.92
+2025-09-24,West,Widget A,29,6191.5
+2025-07-02,South,Gadget Y,16,2909.44
+2025-10-23,West,Gadget Y,4,290.56
+2025-08-17,Midwest,Widget A,33,571.89
+2025-05-05,Midwest,Widget B,6,351.18
+2025-02-22,West,Widget A,20,1282.0
+2025-02-19,Northeast,Doohickey,13,862.94
+2025-05-03,West,Widget B,29,968.6
+2025-01-24,Northeast,Doohickey,18,676.62
+2025-09-14,West,Gadget Y,18,628.02
+2025-03-12,Midwest,Widget B,35,4728.5
+2025-12-09,Northeast,Widget B,37,4000.07
+2025-01-10,West,Gadget Y,25,3908.0
+2025-01-27,Midwest,Gadget X,24,1978.08
+2025-08-12,South,Gadget Y,37,6634.47
+2025-10-15,Midwest,Gadget X,4,318.28
+2025-05-08,West,Gadget X,28,4198.04
+2025-02-25,South,Gadget Y,34,1734.0
+2025-04-13,Midwest,Widget B,33,4988.94
+2025-08-04,Northeast,Widget A,26,4511.78
+2025-01-21,South,Doohickey,3,576.15
+2025-05-20,West,Doohickey,35,6290.2
+2025-02-21,West,Gadget Y,17,634.27
+2025-05-02,South,Gadget X,3,215.4
+2025-11-28,South,Widget A,11,407.44
+2025-08-27,Midwest,Gadget Y,38,4675.52
+2025-03-05,South,Gadget Y,33,1297.56
+2025-10-23,West,Doohickey,19,1311.38
+2025-05-28,Midwest,Gadget Y,30,4166.1
+2025-04-14,Northeast,Doohickey,36,5751.0
+2025-06-05,South,Widget A,40,4455.6
+2025-05-05,Northeast,Doohickey,22,1277.98
+2025-07-22,Midwest,Widget B,1,204.23
+2025-06-15,South,Gadget X,36,2869.2
+2025-04-21,West,Widget B,19,452.96
+2025-10-10,South,Gadget Y,5,690.15
+2025-12-03,Northeast,Gadget X,4,478.16
+2025-02-25,Midwest,Gadget Y,34,2000.22
+2025-06-22,Midwest,Doohickey,23,947.37
+2025-11-09,West,Gadget Y,18,3290.58
+2025-05-18,West,Widget A,9,881.19
+2025-07-30,Northeast,Gadget Y,36,4818.6
+2025-10-20,South,Doohickey,10,989.3
+2025-11-07,Northeast,Gadget Y,8,727.6
+2025-05-28,Northeast,Doohickey,23,1677.39
+2025-10-12,South,Widget A,39,3587.22
+2025-09-13,Midwest,Doohickey,25,2609.0
+2025-06-05,Northeast,Doohickey,10,1026.1
+2025-04-29,South,Gadget X,6,1097.4
+2025-11-08,Midwest,Gadget Y,16,3382.72
+2025-01-06,Northeast,Gadget X,2,43.74
+2025-10-02,Northeast,Doohickey,20,2480.2
+2025-09-22,South,Widget A,28,2604.56
+2025-11-01,West,Widget A,23,2443.52
+2025-09-26,South,Doohickey,15,488.7

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}{{ dashboard.name }} — insightboard{% endblock %}
+{% block content %}
+
+<div class="page-head">
+  <div>
+    <h1>{{ dashboard.name }}</h1>
+    <p class="muted">{{ charts|length }} chart{{ 's' if charts|length != 1 }}</p>
+  </div>
+  <a class="btn" href="{{ url_for('index') }}">+ Add chart from a dataset</a>
+</div>
+
+{% if charts %}
+<div class="chart-grid">
+  {% for c in charts %}
+  <section class="card chart-card" data-chart-id="{{ c.id }}" data-chart-type="{{ c.chart_type }}">
+    <div class="chart-head">
+      <h3>{{ c.title }}</h3>
+      <button class="btn danger ghost small delete-chart" data-chart-id="{{ c.id }}" type="button">Remove</button>
+    </div>
+    <p class="muted small">{{ c.chart_type }} · {{ c.dataset_name }} · {{ c.x_col }}{% if c.y_col %} / {{ c.y_col }} ({{ c.agg }}){% endif %}</p>
+    <div class="chart-canvas-wrap"><canvas></canvas></div>
+    <p class="chart-error muted small" hidden></p>
+  </section>
+  {% endfor %}
+</div>
+{% else %}
+<div class="card empty">
+  <p>This dashboard is empty. Open a dataset and use the chart builder to add charts here.</p>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function () {
+  // render every chart on the page
+  document.querySelectorAll('.chart-card').forEach(function (card) {
+    var id = card.getAttribute('data-chart-id');
+    var canvas = card.querySelector('canvas');
+    var errEl = card.querySelector('.chart-error');
+    fetch('/api/charts/' + id + '/data')
+      .then(function (r) { return r.json().then(function (j) { return {ok: r.ok, body: j}; }); })
+      .then(function (res) {
+        if (!res.ok) { errEl.hidden = false; errEl.textContent = 'Could not load: ' + (res.body.error || 'unknown'); return; }
+        var title = card.querySelector('h3').textContent;
+        var typeText = card.getAttribute('data-chart-type');
+        renderChart(canvas, typeText, title, res.body);
+      });
+  });
+
+  document.querySelectorAll('.delete-chart').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      if (!confirm('Remove this chart?')) return;
+      fetch('/api/charts/' + btn.getAttribute('data-chart-id'), {method: 'DELETE'})
+        .then(function () { location.reload(); });
+    });
+  });
+})();
+</script>
+{% endblock %}

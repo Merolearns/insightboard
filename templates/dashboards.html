@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Dashboards — insightboard{% endblock %}
+{% block content %}
+
+<div class="page-head">
+  <h1>Dashboards</h1>
+</div>
+
+<section class="card">
+  <h2>New dashboard</h2>
+  <form action="{{ url_for('create_dashboard') }}" method="post" class="inline-form">
+    <input type="text" name="name" placeholder="e.g. Q3 sales review" required>
+    <button class="btn primary" type="submit">Create</button>
+  </form>
+</section>
+
+<section>
+  {% if dashboards %}
+    <div class="grid">
+      {% for d in dashboards %}
+      <div class="card dataset-card">
+        <a href="{{ url_for('dashboard_page', dashboard_id=d.id) }}"><h3>{{ d.name }}</h3></a>
+        <div class="meta"><span>{{ d.chart_count }} chart{{ 's' if d.chart_count != 1 }}</span></div>
+        <div class="muted small">created {{ d.created_at[:10] }}</div>
+        <form action="{{ url_for('delete_dashboard', dashboard_id=d.id) }}" method="post"
+              onsubmit="return confirm('Delete this dashboard?');">
+          <button class="btn danger ghost small" type="submit">Delete</button>
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="card empty"><p>No dashboards yet — create one above, then add charts from any dataset page.</p></div>
+  {% endif %}
+</section>
+
+{% endblock %}

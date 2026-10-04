@@ -1,0 +1,15 @@
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# local dev
+.venv/
+venv/
+
+# app data (uploaded CSVs + sqlite db) — generated at runtime, not committed
+data/
+
+# sample outputs people might generate while trying the app
+*.db

@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+{% block title %}{{ dataset.name }} — insightboard{% endblock %}
+{% block content %}
+
+<div class="page-head">
+  <div>
+    <h1>{{ dataset.name }}</h1>
+    <p class="muted">{{ profile.rows }} rows · {{ profile.cols }} columns
+      {% if profile.duplicate_rows %} · {{ profile.duplicate_rows }} duplicate rows{% endif %}</p>
+  </div>
+  <form action="{{ url_for('delete_dataset', dataset_id=dataset.id) }}" method="post"
+        onsubmit="return confirm('Delete this dataset and its stored CSV?');">
+    <button class="btn danger ghost" type="submit">Delete dataset</button>
+  </form>
+</div>
+
+<div class="two-col">
+  <section class="card">
+    <h2>Data profile</h2>
+    <table class="profile-table">
+      <thead>
+        <tr><th>Column</th><th>Type</th><th>Nulls</th><th>Unique</th><th>Sample</th></tr>
+      </thead>
+      <tbody>
+        {% for c in profile.columns %}
+        <tr>
+          <td><code>{{ c.name }}</code></td>
+          <td><span class="type-badge">{{ c.type }}</span></td>
+          <td>{{ c.null_pct }}%</td>
+          <td>{{ c.unique }}</td>
+          <td class="muted small">{{ c.sample[:3]|join(', ') }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {% for c in profile.columns %}
+      {% if c.stats %}
+      <details class="stats-details">
+        <summary><code>{{ c.name }}</code> — min {{ c.stats.min }}, max {{ c.stats.max }}, mean {{ c.stats.mean }}</summary>
+        <dl class="stats-list">
+          <div><dt>min</dt><dd>{{ c.stats.min }}</dd></div>
+          <div><dt>max</dt><dd>{{ c.stats.max }}</dd></div>
+          <div><dt>mean</dt><dd>{{ c.stats.mean }}</dd></div>
+          <div><dt>median</dt><dd>{{ c.stats.median }}</dd></div>
+          <div><dt>std dev</dt><dd>{{ c.stats.std }}</dd></div>
+        </dl>
+      </details>
+      {% endif %}
+    {% endfor %}
+  </section>
+
+  <section class="card">
+    <h2>Chart builder</h2>
+    <div class="form-grid">
+      <label>Chart type
+        <select id="chart-type">
+          {% for t in chart_types %}<option value="{{ t }}">{{ t }}</option>{% endfor %}
+        </select>
+      </label>
+      <label>X axis
+        <select id="x-col">
+          {% for c in profile.columns %}<option value="{{ c.name }}">{{ c.name }} ({{ c.type }})</option>{% endfor %}
+        </select>
+      </label>
+      <label>Y axis
+        <select id="y-col">
+          <option value="">— none (count) —</option>
+          {% for c in profile.columns %}<option value="{{ c.name }}">{{ c.name }} ({{ c.type }})</option>{% endfor %}
+        </select>
+      </label>
+      <label>Aggregation
+        <select id="agg">
+          <option value="sum">sum</option>
+          <option value="avg">average</option>
+          <option value="count">count</option>
+          <option value="min">min</option>
+          <option value="max">max</option>
+        </select>
+      </label>
+      <label class="wide">Chart title
+        <input type="text" id="chart-title" placeholder="e.g. Revenue by region">
+      </label>
+    </div>
+    <div class="btn-row">
+      <button class="btn primary" id="preview-btn" type="button">Preview</button>
+    </div>
+    <div class="preview-wrap">
+      <canvas id="preview-canvas"></canvas>
+      <p class="muted small" id="preview-hint">Hit preview to render the chart.</p>
+    </div>
+
+    <h3>Save to dashboard</h3>
+    <div class="form-grid">
+      <label>Existing dashboard
+        <select id="dash-select">
+          <option value="">— pick one —</option>
+          {% for d in dashboards %}<option value="{{ d.id }}">{{ d.name }}</option>{% endfor %}
+        </select>
+      </label>
+      <label>Or new dashboard
+        <input type="text" id="new-dash-name" placeholder="e.g. Q3 sales review">
+      </label>
+    </div>
+    <div class="btn-row">
+      <button class="btn" id="save-btn" type="button">Save chart</button>
+      <span class="muted small" id="save-msg"></span>
+    </div>
+  </section>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function () {
+  var datasetId = {{ dataset.id }};
+  var previewChart = null;
+
+  function config() {
+    return {
+      dataset_id: datasetId,
+      chart_type: document.getElementById('chart-type').value,
+      x_col: document.getElementById('x-col').value,
+      y_col: document.getElementById('y-col').value || null,
+      agg: document.getElementById('agg').value,
+      title: document.getElementById('chart-title').value || 'Untitled chart'
+    };
+  }
+
+  document.getElementById('preview-btn').addEventListener('click', function () {
+    var cfg = config();
+    document.getElementById('preview-hint').textContent = 'Loading…';
+    fetch('/api/preview', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(cfg)
+    })
+      .then(function (r) { return r.json().then(function (j) { return {ok: r.ok, body: j}; }); })
+      .then(function (res) {
+        if (!res.ok) {
+          document.getElementById('preview-hint').textContent = 'Error: ' + (res.body.error || 'unknown');
+          return;
+        }
+        document.getElementById('preview-hint').textContent = '';
+        if (previewChart) previewChart.destroy();
+        previewChart = renderChart(document.getElementById('preview-canvas'), cfg.chart_type, cfg.title, res.body);
+      });
+  });
+
+  document.getElementById('save-btn').addEventListener('click', function () {
+    var cfg = config();
+    cfg.dashboard_id = document.getElementById('dash-select').value || null;
+    cfg.new_dashboard_name = document.getElementById('new-dash-name').value;
+    var msg = document.getElementById('save-msg');
+    msg.textContent = 'Saving…';
+    fetch('/api/charts', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(cfg)
+    })
+      .then(function (r) { return r.json().then(function (j) { return {ok: r.ok, body: j}; }); })
+      .then(function (res) {
+        if (!res.ok) { msg.textContent = 'Error: ' + (res.body.error || 'unknown'); return; }
+        msg.innerHTML = 'Saved! <a href="/dashboards/' + res.body.dashboard_id + '">View dashboard →</a>';
+      });
+  });
+})();
+</script>
+{% endblock %}

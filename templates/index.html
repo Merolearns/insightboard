@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %}insightboard — datasets{% endblock %}
+{% block content %}
+
+<section class="hero">
+  <h1>Turn a CSV into a dashboard</h1>
+  <p>Upload a spreadsheet, get an automatic data profile, build charts, and save them to a dashboard. No signup, everything runs locally.</p>
+</section>
+
+<section class="card upload-card" id="dropzone">
+  <h2>Upload a CSV</h2>
+  <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data" id="upload-form">
+    <input type="file" name="file" id="file-input" accept=".csv" hidden>
+    <div class="drop-hint" id="drop-hint">
+      <strong>Drag &amp; drop a .csv here</strong>
+      <span>or</span>
+      <button type="button" class="btn" id="browse-btn">Browse files</button>
+    </div>
+    <div class="file-chosen" id="file-chosen" hidden>
+      <span id="file-name"></span>
+      <button type="submit" class="btn primary">Upload &amp; analyze</button>
+      <button type="button" class="btn ghost" id="clear-btn">Clear</button>
+    </div>
+  </form>
+</section>
+
+<section>
+  <div class="section-head">
+    <h2>Your datasets</h2>
+    <span class="muted">{{ datasets|length }} total</span>
+  </div>
+  {% if datasets %}
+    <div class="grid">
+      {% for d in datasets %}
+      <a class="card dataset-card" href="{{ url_for('dataset_page', dataset_id=d.id) }}">
+        <h3>{{ d.name }}</h3>
+        <div class="meta">
+          <span>{{ d.rows }} rows</span> · <span>{{ d.cols }} columns</span>
+        </div>
+        <div class="muted small">uploaded {{ d.uploaded_at[:10] }}</div>
+      </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="card empty">
+      <p>No datasets yet. Upload a CSV above — or try one of the samples in <code>sample_data/</code>.</p>
+    </div>
+  {% endif %}
+</section>
+
+<section>
+  <div class="section-head">
+    <h2>Dashboards</h2>
+    <a class="btn small" href="{{ url_for('dashboards_page') }}">Manage</a>
+  </div>
+  {% if dashboards %}
+    <div class="grid">
+      {% for d in dashboards %}
+      <a class="card dataset-card" href="{{ url_for('dashboard_page', dashboard_id=d.id) }}">
+        <h3>{{ d.name }}</h3>
+        <div class="meta"><span>{{ d.chart_count }} chart{{ 's' if d.chart_count != 1 }}</span></div>
+        <div class="muted small">created {{ d.created_at[:10] }}</div>
+      </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="card empty"><p>No dashboards yet. Build a chart on any dataset page, then save it to a dashboard.</p></div>
+  {% endif %}
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+// drag & drop wiring for the upload card
+(function () {
+  var zone = document.getElementById('dropzone');
+  var input = document.getElementById('file-input');
+  var hint = document.getElementById('drop-hint');
+  var chosen = document.getElementById('file-chosen');
+  var nameEl = document.getElementById('file-name');
+
+  document.getElementById('browse-btn').addEventListener('click', function () { input.click(); });
+  document.getElementById('clear-btn').addEventListener('click', function () {
+    input.value = ''; chosen.hidden = true; hint.style.display = '';
+  });
+  input.addEventListener('change', function () { showFile(input.files[0]); });
+
+  function showFile(f) {
+    if (!f) return;
+    nameEl.textContent = f.name;
+    hint.style.display = 'none';
+    chosen.hidden = false;
+  }
+
+  ['dragenter', 'dragover'].forEach(function (ev) {
+    zone.addEventListener(ev, function (e) { e.preventDefault(); zone.classList.add('dragging'); });
+  });
+  ['dragleave', 'drop'].forEach(function (ev) {
+    zone.addEventListener(ev, function (e) { e.preventDefault(); zone.classList.remove('dragging'); });
+  });
+  zone.addEventListener('drop', function (e) {
+    var f = e.dataTransfer.files[0];
+    if (f) { input.files = e.dataTransfer.files; showFile(f); }
+  });
+})();
+</script>
+{% endblock %}
