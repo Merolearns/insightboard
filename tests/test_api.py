@@ -73,6 +73,18 @@ def test_preview_scatter(client):
     assert body["points"][0] == {"x": 10.0, "y": 100.0}
 
 
+def test_preview_bad_agg(client):
+    _upload(client)
+    resp = client.post(
+        "/api/preview",
+        json={"dataset_id": 1, "chart_type": "bar", "x_col": "region",
+              "y_col": "revenue", "agg": "median"},
+    )
+    # was silently treated as sum before; an unknown agg is a client error
+    assert resp.status_code == 400
+    assert "median" in resp.get_json()["error"]
+
+
 def test_preview_bad_column(client):
     _upload(client)
     resp = client.post(

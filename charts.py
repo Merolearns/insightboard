@@ -55,7 +55,12 @@ def _aggregated(df, chart_type, x_col, y_col, agg):
     else:
         if y_col not in df.columns:
             raise ValueError(f"unknown column: {y_col}")
-        func = AGG_FUNCS.get(agg, "sum")
+        if agg is None:
+            func = "sum"
+        elif agg not in AGG_FUNCS:
+            raise ValueError(f"unknown aggregation: {agg}")
+        else:
+            func = AGG_FUNCS[agg]
         tmp = pd.DataFrame({"_x": df[x_col], "_y": pd.to_numeric(df[y_col], errors="coerce")})
         tmp = tmp.dropna(subset=["_y"])
         if tmp.empty:
