@@ -133,3 +133,14 @@ def test_reject_non_csv(client):
     assert resp.status_code == 302
     # nothing was stored
     assert b"No datasets yet" in client.get("/").get_data()
+
+
+def test_save_chart_rejects_non_numeric_dashboard_id(client):
+    _upload(client)
+    resp = client.post(
+        "/api/charts",
+        json={"dataset_id": 1, "title": "Bad id", "chart_type": "bar",
+              "x_col": "region", "agg": "sum", "dashboard_id": "nope"},
+    )
+    assert resp.status_code == 400
+    assert "dashboard_id" in resp.get_json()["error"]

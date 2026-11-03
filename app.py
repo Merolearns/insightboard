@@ -213,9 +213,12 @@ def api_save_chart():
 
     dashboard_id = payload.get("dashboard_id")
     if dashboard_id:
-        if not db.get_dashboard(int(dashboard_id)):
+        try:
+            dashboard_id = int(dashboard_id)
+        except (TypeError, ValueError):
+            return jsonify({"error": "invalid dashboard_id"}), 400
+        if not db.get_dashboard(dashboard_id):
             return jsonify({"error": "dashboard not found"}), 404
-        dashboard_id = int(dashboard_id)
     else:
         name = (payload.get("new_dashboard_name") or "").strip()
         if not name:
