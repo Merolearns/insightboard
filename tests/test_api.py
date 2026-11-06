@@ -94,6 +94,19 @@ def test_preview_bad_column(client):
     assert resp.status_code == 400
 
 
+def test_preview_non_numeric_y_column(client):
+    # a text column as the Y value used to return an empty chart with no
+    # explanation; now it's a clear 400
+    _upload(client)
+    resp = client.post(
+        "/api/preview",
+        json={"dataset_id": 1, "chart_type": "bar", "x_col": "region",
+              "y_col": "region", "agg": "sum"},
+    )
+    assert resp.status_code == 400
+    assert "no numeric values" in resp.get_json()["error"]
+
+
 def test_save_chart_and_dashboard_flow(client):
     _upload(client)
     # save a chart, creating a new dashboard inline

@@ -64,7 +64,14 @@ def _aggregated(df, chart_type, x_col, y_col, agg):
         tmp = pd.DataFrame({"_x": df[x_col], "_y": pd.to_numeric(df[y_col], errors="coerce")})
         tmp = tmp.dropna(subset=["_y"])
         if tmp.empty:
-            return {"labels": [], "values": []}
+            if df[y_col].dropna().empty:
+                # column is all null -- nothing to aggregate
+                return {"labels": [], "values": []}
+            # has values, just none of them numeric: say so instead of
+            # handing the chart builder an empty chart with no explanation
+            raise ValueError(
+                f"column '{y_col}' has no numeric values to aggregate"
+            )
         grouped = tmp.groupby("_x", dropna=False)["_y"].agg(func)
         labels = [str(v) for v in grouped.index]
         values = [round(float(v), 4) for v in grouped.values]
