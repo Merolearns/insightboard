@@ -111,6 +111,9 @@ def dataset_page(dataset_id):
 
 @app.route("/datasets/<int:dataset_id>/delete", methods=["POST"])
 def delete_dataset(dataset_id):
+    if not db.get_dataset(dataset_id):
+        flash("Dataset not found.")
+        return redirect(url_for("index"))
     db.delete_dataset(dataset_id)
     flash("Dataset deleted.")
     return redirect(url_for("index"))

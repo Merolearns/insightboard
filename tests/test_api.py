@@ -140,6 +140,15 @@ def test_delete_dataset(client):
     assert client.get("/datasets/1").status_code == 302  # gone -> redirect home
 
 
+def test_delete_missing_dataset_says_not_found(client):
+    # deleting an id that was never uploaded used to flash "Dataset
+    # deleted."; now it says the dataset wasn't found
+    resp = client.post("/datasets/999/delete", follow_redirects=True)
+    assert resp.status_code == 200
+    assert b"Dataset not found." in resp.data
+    assert b"Dataset deleted." not in resp.data
+
+
 def test_reject_non_csv(client):
     data = {"file": (io.BytesIO(b"hello"), "notes.txt")}
     resp = client.post("/upload", data=data, content_type="multipart/form-data")
