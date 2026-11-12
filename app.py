@@ -147,6 +147,9 @@ def dashboard_page(dashboard_id):
 
 @app.route("/dashboards/<int:dashboard_id>/delete", methods=["POST"])
 def delete_dashboard(dashboard_id):
+    if not db.get_dashboard(dashboard_id):
+        flash("Dashboard not found.")
+        return redirect(url_for("dashboards_page"))
     db.delete_dashboard(dashboard_id)
     flash("Dashboard deleted.")
     return redirect(url_for("dashboards_page"))

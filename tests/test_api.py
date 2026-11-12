@@ -166,3 +166,17 @@ def test_save_chart_rejects_non_numeric_dashboard_id(client):
     )
     assert resp.status_code == 400
     assert "dashboard_id" in resp.get_json()["error"]
+
+
+def test_delete_missing_dashboard_says_not_found(client):
+    resp = client.post("/dashboards/999/delete", follow_redirects=True)
+    assert resp.status_code == 200
+    assert b"Dashboard not found." in resp.data
+    assert b"Dashboard deleted." not in resp.data
+
+
+def test_delete_existing_dashboard_still_works(client):
+    client.post("/dashboards", data={"name": "Sales"})
+    resp = client.post("/dashboards/1/delete", follow_redirects=True)
+    assert resp.status_code == 200
+    assert b"Dashboard deleted." in resp.data
