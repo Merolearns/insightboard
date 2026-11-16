@@ -85,7 +85,9 @@ def profile_dataframe(df):
     return {
         "rows": int(len(df)),
         "cols": int(len(df.columns)),
-        "columns": [profile_column(df[c]) for c in df.columns],
+        # positional indexing: df[name] returns a DataFrame (not a Series)
+        # when a column name appears twice, which used to crash profiling
+        "columns": [profile_column(df.iloc[:, i]) for i in range(len(df.columns))],
         # duplicate rows is a cheap but useful data-quality signal
         "duplicate_rows": int(df.duplicated().sum()),
     }

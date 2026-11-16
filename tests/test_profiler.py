@@ -72,3 +72,15 @@ def test_infer_type_direct():
 def test_duplicate_rows_counted():
     df = pd.DataFrame({"a": [1, 1, 2], "b": ["x", "x", "y"]})
     assert profile_dataframe(df)["duplicate_rows"] == 1
+
+
+def test_duplicate_column_names_profiled():
+    # df["x"] returns a DataFrame when "x" appears twice, which used to
+    # crash profile_column with a TypeError
+    df = pd.DataFrame([[1, 2], [3, 4]], columns=["x", "x"])
+    p = profile_dataframe(df)
+    assert p["cols"] == 2
+    assert [c["name"] for c in p["columns"]] == ["x", "x"]
+    assert [c["type"] for c in p["columns"]] == ["integer", "integer"]
+    assert p["columns"][0]["stats"]["max"] == 3
+    assert p["columns"][1]["stats"]["max"] == 4
