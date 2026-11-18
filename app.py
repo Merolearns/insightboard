@@ -38,7 +38,11 @@ def _load_dataset(dataset_id):
 def _read_upload(file_storage):
     """Parse an uploaded CSV into a DataFrame. Raises ValueError on failure."""
     try:
-        return pd.read_csv(file_storage)
+        # utf-8-sig strips a BOM if one is there (Excel-saved CSVs have
+        # one) and reads plain UTF-8 identically otherwise -- without it
+        # the first column comes back named "\ufeffdate" and nothing
+        # downstream matches it
+        return pd.read_csv(file_storage, encoding="utf-8-sig")
     except UnicodeDecodeError:
         file_storage.seek(0)
         try:

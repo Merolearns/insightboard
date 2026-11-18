@@ -39,6 +39,19 @@ def test_upload_and_dataset_page(client):
     assert "Chart builder" in html
 
 
+def test_upload_strips_bom_from_first_column(client):
+    # Excel-saved CSVs start with a UTF-8 BOM; without stripping it the
+    # first column is named "\ufeffdate" and nothing matches it
+    bom_csv = b"\xef\xbb\xbf" + CSV.encode()
+    data = {"file": (io.BytesIO(bom_csv), "sales.csv")}
+    resp = client.post("/upload", data=data, content_type="multipart/form-data")
+    assert resp.status_code == 302
+    page = client.get("/datasets/1")
+    html = page.get_data(as_text=True)
+    assert "date" in html
+    assert "\ufeffdate" not in html
+
+
 def test_preview_bar_chart(client):
     _upload(client)
     resp = client.post(
