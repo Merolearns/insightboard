@@ -19,6 +19,7 @@ Everything runs locally. No accounts, no cloud, no tracking.
 - **Chart builder** — pick a dataset, chart type (bar, line, pie, scatter),
   X and Y columns, and an aggregation (sum, avg, count, min, max). Live
   preview before you commit. Pie charts collapse small slices into "Other";
+  bar and line charts cap at 100 categories, lumping the rest into "Other";
   scatter plots cap at 500 points so big datasets don't freeze the browser.
 - **Dashboards** — name a dashboard, save multiple charts to it, view them
   all on one page. Charts and dashboards persist in SQLite.

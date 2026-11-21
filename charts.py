@@ -17,6 +17,7 @@ AGG_FUNCS = {
 CHART_TYPES = ("bar", "line", "pie", "scatter")
 MAX_SCATTER_POINTS = 500
 MAX_PIE_SLICES = 12
+MAX_BAR_LABELS = 100
 
 
 def compute_chart_data(df, chart_type, x_col, y_col=None, agg="sum"):
@@ -45,6 +46,19 @@ def _scatter(df, x_col, y_col):
         for _, r in sub.iterrows()
     ]
     return {"points": points}
+
+
+def _cap_labels(labels, values, limit):
+    """Cap the number of categories: keep the largest `limit - 1` by value,
+    lump the rest into "Other". Kept labels stay in their original order."""
+    if len(labels) <= limit:
+        return labels, values
+    order = sorted(range(len(values)), key=lambda i: values[i], reverse=True)
+    keep_idx = sorted(order[: limit - 1])
+    other = round(sum(values[i] for i in order[limit - 1 :]), 4)
+    return [labels[i] for i in keep_idx] + ["Other"], [
+        values[i] for i in keep_idx
+    ] + [other]
 
 
 def _aggregated(df, chart_type, x_col, y_col, agg):
@@ -83,5 +97,7 @@ def _aggregated(df, chart_type, x_col, y_col, agg):
         other = round(sum(v for _, v in pairs[MAX_PIE_SLICES - 1 :]), 4)
         labels = [label for label, _ in keep] + ["Other"]
         values = [v for _, v in keep] + [other]
+    elif chart_type in ("bar", "line"):
+        labels, values = _cap_labels(labels, values, MAX_BAR_LABELS)
 
     return {"labels": labels, "values": values}
