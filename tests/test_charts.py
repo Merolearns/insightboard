@@ -29,3 +29,14 @@ def test_small_bar_chart_unchanged():
     df = pd.DataFrame({"region": ["East", "West"], "revenue": [10.0, 20.0]})
     data = compute_chart_data(df, "bar", "region", "revenue", "sum")
     assert data == {"labels": ["East", "West"], "values": [10.0, 20.0]}
+
+
+def test_scatter_same_column_for_x_and_y():
+    # plotting a column against itself is a valid diagonal, not a crash:
+    # df[[c, c]] has duplicate columns, so the old code handed a
+    # DataFrame to to_numeric and the request 500'd
+    df = pd.DataFrame({"a": [1, 2, "x", 4]})
+    data = compute_chart_data(df, "scatter", "a", "a")
+    assert data == {"points": [
+        {"x": 1.0, "y": 1.0}, {"x": 2.0, "y": 2.0}, {"x": 4.0, "y": 4.0},
+    ]}

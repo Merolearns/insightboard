@@ -34,15 +34,17 @@ def compute_chart_data(df, chart_type, x_col, y_col=None, agg="sum"):
 def _scatter(df, x_col, y_col):
     if not y_col or y_col not in df.columns:
         raise ValueError("scatter charts need both an X and a Y column")
-    sub = df[[x_col, y_col]].copy()
-    sub[x_col] = pd.to_numeric(sub[x_col], errors="coerce")
-    sub[y_col] = pd.to_numeric(sub[y_col], errors="coerce")
-    sub = sub.dropna()
+    # built column by column: df[[c, c]] gives duplicate columns, and
+    # selecting one of them returns a DataFrame, which to_numeric rejects
+    sub = pd.DataFrame({
+        "x": pd.to_numeric(df[x_col], errors="coerce"),
+        "y": pd.to_numeric(df[y_col], errors="coerce"),
+    }).dropna()
     if len(sub) > MAX_SCATTER_POINTS:
         # deterministic sample so the chart doesn't change on every load
         sub = sub.sample(MAX_SCATTER_POINTS, random_state=42).sort_index()
     points = [
-        {"x": round(float(r[x_col]), 4), "y": round(float(r[y_col]), 4)}
+        {"x": round(float(r["x"]), 4), "y": round(float(r["y"]), 4)}
         for _, r in sub.iterrows()
     ]
     return {"points": points}
