@@ -221,6 +221,17 @@ def api_save_chart():
     if not db.get_dataset(dataset_id):
         return jsonify({"error": "dataset not found"}), 404
 
+    # validate the config the same way the preview does, before saving:
+    # a bad column or aggregation used to save fine and then break
+    # every dashboard load with a 400 on the stored chart
+    _, df = _load_dataset(dataset_id)
+    if df is None:
+        return jsonify({"error": "dataset not found"}), 404
+    try:
+        compute_chart_data(df, chart_type, x_col, y_col, agg)
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
+
     dashboard_id = payload.get("dashboard_id")
     if dashboard_id:
         try:

@@ -181,6 +181,32 @@ def test_save_chart_rejects_non_numeric_dashboard_id(client):
     assert "dashboard_id" in resp.get_json()["error"]
 
 
+def test_save_chart_validates_config_before_saving(client):
+    # a bad column or aggregation used to save fine (200) and then break
+    # every dashboard load with a 400 on the stored chart
+    _upload(client)
+    base = {"dataset_id": 1, "title": "Bad", "chart_type": "bar",
+            "new_dashboard_name": "My dashboard"}
+    bad_x = client.post("/api/charts", json={**base, "x_col": "nope",
+                                             "y_col": "revenue", "agg": "sum"})
+    assert bad_x.status_code == 400
+    assert "nope" in bad_x.get_json()["error"]
+    bad_agg = client.post("/api/charts", json={**base, "x_col": "region",
+                                               "y_col": "revenue", "agg": "median"})
+    assert bad_agg.status_code == 400
+    assert "median" in bad_agg.get_json()["error"]
+    bad_scatter = client.post("/api/charts", json={**base, "chart_type": "scatter",
+                                                   "x_col": "units"})
+    assert bad_scatter.status_code == 400
+    assert "scatter" in bad_scatter.get_json()["error"]
+    # nothing was stored: the next valid save gets the first ids
+    good = client.post("/api/charts", json={**base, "x_col": "region",
+                                            "y_col": "revenue", "agg": "sum"})
+    assert good.status_code == 200
+    assert good.get_json()["chart_id"] == 1
+    assert good.get_json()["dashboard_id"] == 1
+
+
 def test_delete_missing_dashboard_says_not_found(client):
     resp = client.post("/dashboards/999/delete", follow_redirects=True)
     assert resp.status_code == 200
