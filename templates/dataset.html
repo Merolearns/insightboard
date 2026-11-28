@@ -153,6 +153,7 @@
     cfg.dashboard_id = document.getElementById('dash-select').value || null;
     cfg.new_dashboard_name = document.getElementById('new-dash-name').value;
     var msg = document.getElementById('save-msg');
+    var btn = document.getElementById('save-btn');
     msg.textContent = 'Saving…';
     fetch('/api/charts', {
       method: 'POST',
@@ -163,6 +164,10 @@
       .then(function (res) {
         if (!res.ok) { msg.textContent = 'Error: ' + (res.body.error || 'unknown'); return; }
         msg.innerHTML = 'Saved! <a href="/dashboards/' + res.body.dashboard_id + '">View dashboard →</a>';
+        // pulse the button itself on success instead of only swapping the text
+        btn.classList.remove('pulse');
+        void btn.offsetWidth; // restart the animation if it just ran
+        btn.classList.add('pulse');
       });
   });
 })();
